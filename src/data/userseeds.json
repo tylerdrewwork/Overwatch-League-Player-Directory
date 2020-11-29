@@ -1,5 +1,6 @@
 [
     {
+        "id": 0,
         "username": "sakiskid",
         "firstName": "Tyler",
         "lastName": "Smith",
@@ -9,6 +10,7 @@
         "team": null
     },
     {
+        "id": 1,
         "username": "kdewt",
         "firstName": "Karelly",
         "lastName": "Trevizo",
@@ -18,6 +20,7 @@
         "team": null
     },
     {
+        "id": 2,
         "username": "Jay3",
         "firstName": null,
         "lastName": null,
@@ -27,6 +30,7 @@
         "team": null
     },
     {
+        "id": 3,
         "username": "null",
         "firstName": "Shika",
         "lastName": "Maru",
