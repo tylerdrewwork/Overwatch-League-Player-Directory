@@ -1,0 +1,38 @@
+[
+    {
+        "username": "sakiskid",
+        "firstName": "Tyler",
+        "lastName": "Smith",
+        "competitiveRank": "2801",
+        "mainRole": "Tank",
+        "mainHero": "Reinhardt",
+        "team": null
+    },
+    {
+        "username": "kdewt",
+        "firstName": "Karelly",
+        "lastName": "Trevizo",
+        "competitiveRank": "2024",
+        "mainRole": "Healer",
+        "mainHero": "Mercy",
+        "team": null
+    },
+    {
+        "username": "Jay3",
+        "firstName": null,
+        "lastName": null,
+        "competitiveRank": "2801",
+        "mainRole": "Tank",
+        "mainHero": "Reinhardt",
+        "team": null
+    },
+    {
+        "username": "null",
+        "firstName": "Shika",
+        "lastName": "Maru",
+        "competitiveRank": "4500",
+        "mainRole": "Damage",
+        "mainHero": "Genji",
+        "team": null
+    }
+]
