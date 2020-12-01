@@ -2,6 +2,7 @@ import React from "react";
 import Entry from "./entry";
 import players from "../data/userseeds.json";
 import Table from 'react-bootstrap/Table';
+import TableHeader from './tableHeader'
 
 class TableMain extends React.Component {
   state = {
@@ -13,13 +14,13 @@ class TableMain extends React.Component {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Username</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Rank</th>
-            <th>Main Role</th>
-            <th>Main Hero</th>
-            <th>Team</th>
+            <TableHeader text="Username" property="username"/>
+            <TableHeader text="First Name" property="firstName"/>
+            <TableHeader text="Last Name" property="lastName"/>
+            <TableHeader text="Rank" property="competitiveRank"/>
+            <TableHeader text="Main Role" property="mainRole"/>
+            <TableHeader text="Main Hero" property="mainHero"/>
+            <TableHeader text="Team" property="team"/>
           </tr>
         </thead>
         <tbody>
