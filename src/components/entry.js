@@ -6,7 +6,7 @@ function Entry (props) {
             <td>{getUsernameWithLink(props.link, props.username)}</td>
             <td>{props.firstName}</td>
             <td>{props.lastName}</td>
-            <td>{props.rank}</td>
+            <td>{props.competitiveRank}</td>
             <td>{props.mainRole}</td>
             <td>{props.mainHero}</td>
             <td>{props.team}</td>
