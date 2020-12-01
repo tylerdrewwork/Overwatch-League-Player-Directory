@@ -2,9 +2,9 @@ import React from 'react';
 
 function Entry (props) {
     return (
-        <div>
-            First Name: {props.firstName}
-        </div>
+        <tr>
+            <td>{props.firstName}</td>
+        </tr>
     );
 }
 

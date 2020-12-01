@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import Table from './components/table';
+import TableMain from './components/tableMain';
 
 function App() {
   return (
-    <div className="App">
-      <Table />
+    <div>
+      <TableMain />
     </div>
   );
 }

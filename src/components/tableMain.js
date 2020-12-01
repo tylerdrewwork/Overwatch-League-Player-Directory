@@ -1,17 +1,31 @@
 import React from "react";
 import Entry from "./entry";
 import players from "../data/userseeds.json";
+import Table from 'react-bootstrap/Table';
 
-class Table extends React.Component {
+class TableMain extends React.Component {
   state = {
 
   }
 
   render() {
     return (
-      <div>
-        {populate()}
-      </div>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Rank</th>
+            <th>Main Role</th>
+            <th>Main Hero</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+        <tbody>
+          {populate()}
+        </tbody>
+      </Table>
     );
   }
 }
@@ -35,4 +49,4 @@ function populate () {
   )
 }
 
-export default Table;
+export default TableMain;
