@@ -3,7 +3,7 @@ import React from 'react';
 function Entry (props) {
     return (
         <tr>
-            <td>{props.username}</td>
+            <td>{getUsernameWithLink(props.link, props.username)}</td>
             <td>{props.firstName}</td>
             <td>{props.lastName}</td>
             <td>{props.rank}</td>
@@ -12,6 +12,11 @@ function Entry (props) {
             <td>{props.team}</td>
         </tr>
     );
+}
+
+function getUsernameWithLink (link, username) {
+    if (link) { return <a href={link}>{username}</a> }
+    else { return username }
 }
 
 export default Entry;

@@ -43,6 +43,7 @@ function populate () {
           mainRole = {player.mainRole}
           mainHero = {player.mainHero}
           team = {player.team}
+          link = {player.link}
         />
       )
     })
