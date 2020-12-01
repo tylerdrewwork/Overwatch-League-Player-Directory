@@ -1,17 +1,24 @@
 import React from 'react';
 
-function Entry (props) {
-    return (
-        <tr>
-            <td>{getUsernameWithLink(props.link, props.username)}</td>
-            <td>{props.firstName}</td>
-            <td>{props.lastName}</td>
-            <td>{props.competitiveRank}</td>
-            <td>{props.mainRole}</td>
-            <td>{props.mainHero}</td>
-            <td>{props.team}</td>
-        </tr>
-    );
+class Entry extends React.Component {
+    
+    state = {
+        hidden: false,
+    }
+
+    render () {
+        return (
+            <tr>
+                <td>{getUsernameWithLink(this.props.link, this.props.username)}</td>
+                <td>{this.props.firstName}</td>
+                <td>{this.props.lastName}</td>
+                <td>{this.props.competitiveRank}</td>
+                <td>{this.props.mainRole}</td>
+                <td>{this.props.mainHero}</td>
+                <td>{this.props.team}</td>
+            </tr>
+        );
+    }
 }
 
 function getUsernameWithLink (link, username) {
