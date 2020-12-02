@@ -3,7 +3,7 @@ import React from 'react';
 function TableHeader (props) {
     return (
         <th>
-            {props.text}
+            <button onClick={() => props.sortMethod(props.category)}> {props.text} </button>
         </th>
     );
 }

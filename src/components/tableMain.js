@@ -1,54 +1,104 @@
 import React from "react";
 import Entry from "./entry";
-import players from "../data/userseeds.json";
+import playerdata from "../data/userseeds.json";
 import Table from 'react-bootstrap/Table';
-import TableHeader from './tableHeader'
+import TableHeader from './tableHeader';
 
-class TableMain extends React.Component {
-  state = {
-    
+function TableMain () {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     players: playerdata,
+  //     sortCategory: null,
+  //     sortDirection: "descending",
+  //     searchQuery: null,
+  //   }
+
+  //   this.sortByCategory = this.handleClick.bind(this);
+  // }
+
+  function componentDidMount() {
+    // this.sortByCategory("username");
   }
 
-  render() {
-    return (
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <TableHeader text="Username" property="username"/>
-            <TableHeader text="First Name" property="firstName"/>
-            <TableHeader text="Last Name" property="lastName"/>
-            <TableHeader text="Rank" property="competitiveRank"/>
-            <TableHeader text="Main Role" property="mainRole"/>
-            <TableHeader text="Main Hero" property="mainHero"/>
-            <TableHeader text="Team" property="team"/>
-          </tr>
-        </thead>
-        <tbody>
-          {populate()}
-        </tbody>
-      </Table>
-    );
-  }
-}
+  function componentWillUnmount() {
 
-function populate () {
-  return(
-    players.map(player => {
-      return (
-        <Entry 
-          key = {player.id}
-          username = {player.username}
-          firstName = {player.firstName}
-          lastName = {player.lastName}
-          competitiveRank = {player.competitiveRank}
-          mainRole = {player.mainRole}
-          mainHero = {player.mainHero}
-          team = {player.team}
-          link = {player.link}
-        />
-      )
-    })
-  )
+  }
+
+  return (
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <TableHeader text="Username" category="username" sortMethod={sortByCategory}/>
+          <TableHeader text="First Name" category="firstName" sortMethod={sortByCategory}/>
+          <TableHeader text="Last Name" category="lastName" sortMethod={sortByCategory}/>
+          <TableHeader text="Rank" category="competitiveRank" sortMethod={sortByCategory}/>
+          <TableHeader text="Main Role" category="mainRole" sortMethod={sortByCategory}/>
+          <TableHeader text="Main Hero" category="mainHero" sortMethod={sortByCategory}/>
+          <TableHeader text="Team" category="team" sortMethod={sortByCategory}/>
+        </tr>
+      </thead>
+      <tbody>
+        {/* Needs code to display players */}
+        {/* {this.state.sortCategory && sortByCategory()} */}
+      </tbody>
+    </Table>
+  );
+
+  function sortByCategory (category, isDescending) {
+    // this.setState({sortCategory : category});
+    console.log("sorted by category", category);
+
+    // let sortedPlayers = this.state.players.sort(function(a, b) {
+    //   return a[category] - b[category];
+    // });
+
+    // console.log("sorted players", sortedPlayers);
+
+    // this.populate (sortedPlayers);
+  }
+
+  // searchByCategory () {
+
+  // }
+
+  // populate (players) {
+  //   players.map(player => {
+  //     return (
+  //       <Entry 
+  //         key = {player.id}
+  //         username = {player.username}
+  //         firstName = {player.firstName}
+  //         lastName = {player.lastName}
+  //         competitiveRank = {player.competitiveRank}
+  //         mainRole = {player.mainRole}
+  //         mainHero = {player.mainHero}
+  //         team = {player.team}
+  //         link = {player.link}
+  //       />
+  //     )
+  //   })
+  // }
+
+  // populateOLD () {
+  //   return(
+  //     playerdata.map(player => {
+  //       return (
+  //         <Entry 
+  //           key = {player.id}
+  //           username = {player.username}
+  //           firstName = {player.firstName}
+  //           lastName = {player.lastName}
+  //           competitiveRank = {player.competitiveRank}
+  //           mainRole = {player.mainRole}
+  //           mainHero = {player.mainHero}
+  //           team = {player.team}
+  //           link = {player.link}
+  //         />
+  //       )
+  //     })
+  //   )
+  // }
 }
 
 export default TableMain;
