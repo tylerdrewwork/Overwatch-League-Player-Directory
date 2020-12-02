@@ -51,13 +51,23 @@ function TableMain () {
   );
 
   function sortByCategory (category, isDescending) {
-    // console.log("sorted by category", category);
+    console.log("sorted by category", category);
 
     let sortedPlayers = playerdata.sort(function(a, b) {
-      return a[category] - b[category];
+      let catA = a[category].toUpperCase();
+      let catB = b[category].toUpperCase();
+      if(catA > catB) {
+        return 1;
+      } else if (catA < catB) {
+        return -1;
+      } else {
+        return 0;
+      }
     });
 
     setPlayers(sortedPlayers);
+
+
 
     // console.log("sorted players", sortedPlayers);
 
