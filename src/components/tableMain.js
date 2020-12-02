@@ -45,7 +45,7 @@ function TableMain () {
       </thead>
       <tbody>
         {/* Needs code to display players */}
-        {sortCategory && sortByCategory()}
+        {renderPlayers()}
       </tbody>
     </Table>
   );
@@ -53,7 +53,7 @@ function TableMain () {
   function sortByCategory (category, isDescending) {
     // console.log("sorted by category", category);
 
-    let sortedPlayers = players.sort(function(a, b) {
+    let sortedPlayers = playerdata.sort(function(a, b) {
       return a[category] - b[category];
     });
 
@@ -64,26 +64,50 @@ function TableMain () {
     // this.populate (sortedPlayers);
   }
 
+  function renderPlayers () {
+    return(
+      players.map(player => {
+        return (
+          <Entry 
+            key = {player.id}
+            username = {player.username}
+            firstName = {player.firstName}
+            lastName = {player.lastName}
+            competitiveRank = {player.competitiveRank}
+            mainRole = {player.mainRole}
+            mainHero = {player.mainHero}
+            team = {player.team}
+            link = {player.link}
+          />
+        )
+      })
+    )
+
+    // return (
+    //   players.map(player => {
+    //     return (
+    //       <Entry 
+    //         key = {player.id}
+    //         username = {player.username}
+    //         firstName = {player.firstName}
+    //         lastName = {player.lastName}
+    //         competitiveRank = {player.competitiveRank}
+    //         mainRole = {player.mainRole}
+    //         mainHero = {player.mainHero}
+    //         team = {player.team}
+    //         link = {player.link}
+    //       />
+    //     )
+    //   })
+    // )
+  }
+
   // searchByCategory () {
 
   // }
 
   // populate (players) {
-  //   players.map(player => {
-  //     return (
-  //       <Entry 
-  //         key = {player.id}
-  //         username = {player.username}
-  //         firstName = {player.firstName}
-  //         lastName = {player.lastName}
-  //         competitiveRank = {player.competitiveRank}
-  //         mainRole = {player.mainRole}
-  //         mainHero = {player.mainHero}
-  //         team = {player.team}
-  //         link = {player.link}
-  //       />
-  //     )
-  //   })
+  //   
   // }
 
   // populateOLD () {
