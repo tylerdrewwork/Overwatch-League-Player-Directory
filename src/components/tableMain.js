@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Entry from "./entry";
 import playerdata from "../data/userseeds.json";
 import Table from 'react-bootstrap/Table';
@@ -16,6 +16,11 @@ function TableMain () {
 
   //   this.sortByCategory = this.handleClick.bind(this);
   // }
+
+  const [players, setPlayers] = useState([...playerdata]);
+  const [sortCategory, setSortCategory] = useState("username");
+  const [sortDirection, setSortDirection] = useState("descending");
+  const [searchQuery, setSearchQuery] = useState(null);
 
   function componentDidMount() {
     // this.sortByCategory("username");
@@ -40,18 +45,19 @@ function TableMain () {
       </thead>
       <tbody>
         {/* Needs code to display players */}
-        {/* {this.state.sortCategory && sortByCategory()} */}
+        {sortCategory && sortByCategory()}
       </tbody>
     </Table>
   );
 
   function sortByCategory (category, isDescending) {
-    // this.setState({sortCategory : category});
-    console.log("sorted by category", category);
+    // console.log("sorted by category", category);
 
-    // let sortedPlayers = this.state.players.sort(function(a, b) {
-    //   return a[category] - b[category];
-    // });
+    let sortedPlayers = players.sort(function(a, b) {
+      return a[category] - b[category];
+    });
+
+    setPlayers(sortedPlayers);
 
     // console.log("sorted players", sortedPlayers);
 
