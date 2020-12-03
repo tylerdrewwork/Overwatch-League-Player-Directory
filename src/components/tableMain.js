@@ -4,8 +4,17 @@ import Table from 'react-bootstrap/Table';
 import TableHeader from './tableHeader';
 import TableBody from './tableBody';
 
+let sortCategory = 'username';
+let sortDirection = 'descending';
+let searchQuery = null;
+
 function TableMain () {
   let [players, setPlayers] = useState([...playerdata]);
+  // let [sortOptions, setSortOptions] = useState({
+  //   category : 'username',
+  //   direction : 'descending',
+  //   searchQuery : null
+  // })
   // const [sortCategory, setSortCategory] = useState("username");
   // const [sortDirection, setSortDirection] = useState("descending");
   // const [searchQuery, setSearchQuery] = useState(null);
@@ -13,6 +22,10 @@ function TableMain () {
   useEffect(() => {
     console.log("Players updated! Re-rendering.");
   }, [players])
+
+  useEffect(() => {
+
+  }, [sortCategory, sortDirection, searchQuery]);
 
   return (
     <Table striped bordered hover>
@@ -32,6 +45,13 @@ function TableMain () {
   );
 
   function sortByCategory (category) {
+    if (sortCategory === category) {
+      toggleDirection();
+    } else {
+      sortDirection = 'descending';
+      sortCategory = category;
+    }
+
     let catA, catB;
     let sortedPlayers = playerdata.sort(function(a, b) {
       catA = a[category];
@@ -60,16 +80,28 @@ function TableMain () {
 
     // If the category is based on numbers, reverse it. The sorting algorithm sorts these in reverse by default
     if (typeof catA === "number") { 
-      console.log("Reversing sorted players because the category is a typeof number.")
       sortedPlayers.reverse(); 
+    } 
+    
+    if (sortDirection === "ascending") {
+      sortedPlayers.reverse();
     }
 
     /* NOTE I DID IT!!!!! There was a HUGE issue here where I was using `setPlayers(sortedPlayers)` and it wasn't updating state, which wasn't re-rendering the component. 
       I believe this was caused because though I was reording the array, I wasn't actually re-assigning it. 
       For some reason, spreading the array is what solved this incredibly frustrating issue.
       This article helped me solve this: https://stackoverflow.com/questions/43638938/updating-an-object-with-setstate-in-react
+      This article explains the issue: https://stackoverflow.com/questions/56266575/why-is-usestate-not-triggering-re-render
     */
     setPlayers([...sortedPlayers]);
+  }
+
+  function toggleDirection () {
+    if(sortDirection === "ascending") {
+      sortDirection = "descending";
+    } else {
+      sortDirection = "ascending";
+    }
   }
 }
 
