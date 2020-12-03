@@ -32,17 +32,37 @@ function TableMain () {
   );
 
   function sortByCategory (category) {
+    let catA, catB;
     let sortedPlayers = playerdata.sort(function(a, b) {
-      let catA = a[category].toUpperCase();
-      let catB = b[category].toUpperCase();
-      if(catA > catB) {
-        return 1;
-      } else if (catA < catB) {
-        return -1;
-      } else {
-        return 0;
+      catA = a[category];
+      catB = b[category];
+
+      // If either category is null, then sort accordingly
+      if(catA === null || catB === null) {
+        if (catA === null && catB === null) { return 0; } 
+        else if (catA === null) { return 1; } 
+        else if (catB === null) { return -1; }
+      }
+
+      // If neither are null, then sort accordingly.
+      else {
+        // If both are strings, then capitalize
+        if(typeof catA === 'string' && typeof catB === 'string') {
+          catA = catA.toUpperCase();
+          catB = catB.toUpperCase();
+        }
+
+        if(catA > catB) { return 1; } 
+        else if (catA < catB) { return -1; } 
+        else { return 0; }
       }
     });
+
+    // If the category is based on numbers, reverse it. The sorting algorithm sorts these in reverse by default
+    if (typeof catA === "number") { 
+      console.log("Reversing sorted players because the category is a typeof number.")
+      sortedPlayers.reverse(); 
+    }
 
     /* NOTE I DID IT!!!!! There was a HUGE issue here where I was using `setPlayers(sortedPlayers)` and it wasn't updating state, which wasn't re-rendering the component. 
       I believe this was caused because though I was reording the array, I wasn't actually re-assigning it. 
