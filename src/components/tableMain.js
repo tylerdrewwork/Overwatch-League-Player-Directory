@@ -1,34 +1,18 @@
 import React, {useState, useEffect} from "react";
-import Entry from "./entry";
 import playerdata from "../data/userseeds.json";
 import Table from 'react-bootstrap/Table';
 import TableHeader from './tableHeader';
+import TableBody from './tableBody';
 
 function TableMain () {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     players: playerdata,
-  //     sortCategory: null,
-  //     sortDirection: "descending",
-  //     searchQuery: null,
-  //   }
+  let [players, setPlayers] = useState([...playerdata]);
+  // const [sortCategory, setSortCategory] = useState("username");
+  // const [sortDirection, setSortDirection] = useState("descending");
+  // const [searchQuery, setSearchQuery] = useState(null);
 
-  //   this.sortByCategory = this.handleClick.bind(this);
-  // }
-
-  const [players, setPlayers] = useState([...playerdata]);
-  const [sortCategory, setSortCategory] = useState("username");
-  const [sortDirection, setSortDirection] = useState("descending");
-  const [searchQuery, setSearchQuery] = useState(null);
-
-  function componentDidMount() {
-    // this.sortByCategory("username");
-  }
-
-  function componentWillUnmount() {
-
-  }
+  useEffect(() => {
+    console.log("Players updated! Re-rendering.");
+  }, [players])
 
   return (
     <Table striped bordered hover>
@@ -43,16 +27,11 @@ function TableMain () {
           <TableHeader text="Team" category="team" sortMethod={sortByCategory}/>
         </tr>
       </thead>
-      <tbody>
-        {/* Needs code to display players */}
-        {renderPlayers()}
-      </tbody>
+      <TableBody players={players}/>
     </Table>
   );
 
-  function sortByCategory (category, isDescending) {
-    console.log("sorted by category", category);
-
+  function sortByCategory (category) {
     let sortedPlayers = playerdata.sort(function(a, b) {
       let catA = a[category].toUpperCase();
       let catB = b[category].toUpperCase();
@@ -65,80 +44,13 @@ function TableMain () {
       }
     });
 
-    setPlayers(sortedPlayers);
-
-
-
-    // console.log("sorted players", sortedPlayers);
-
-    // this.populate (sortedPlayers);
+    /* NOTE I DID IT!!!!! There was a HUGE issue here where I was using `setPlayers(sortedPlayers)` and it wasn't updating state, which wasn't re-rendering the component. 
+      I believe this was caused because though I was reording the array, I wasn't actually re-assigning it. 
+      For some reason, spreading the array is what solved this incredibly frustrating issue.
+      This article helped me solve this: https://stackoverflow.com/questions/43638938/updating-an-object-with-setstate-in-react
+    */
+    setPlayers([...sortedPlayers]);
   }
-
-  function renderPlayers () {
-    return(
-      players.map(player => {
-        return (
-          <Entry 
-            key = {player.id}
-            username = {player.username}
-            firstName = {player.firstName}
-            lastName = {player.lastName}
-            competitiveRank = {player.competitiveRank}
-            mainRole = {player.mainRole}
-            mainHero = {player.mainHero}
-            team = {player.team}
-            link = {player.link}
-          />
-        )
-      })
-    )
-
-    // return (
-    //   players.map(player => {
-    //     return (
-    //       <Entry 
-    //         key = {player.id}
-    //         username = {player.username}
-    //         firstName = {player.firstName}
-    //         lastName = {player.lastName}
-    //         competitiveRank = {player.competitiveRank}
-    //         mainRole = {player.mainRole}
-    //         mainHero = {player.mainHero}
-    //         team = {player.team}
-    //         link = {player.link}
-    //       />
-    //     )
-    //   })
-    // )
-  }
-
-  // searchByCategory () {
-
-  // }
-
-  // populate (players) {
-  //   
-  // }
-
-  // populateOLD () {
-  //   return(
-  //     playerdata.map(player => {
-  //       return (
-  //         <Entry 
-  //           key = {player.id}
-  //           username = {player.username}
-  //           firstName = {player.firstName}
-  //           lastName = {player.lastName}
-  //           competitiveRank = {player.competitiveRank}
-  //           mainRole = {player.mainRole}
-  //           mainHero = {player.mainHero}
-  //           team = {player.team}
-  //           link = {player.link}
-  //         />
-  //       )
-  //     })
-  //   )
-  // }
 }
 
 export default TableMain;
