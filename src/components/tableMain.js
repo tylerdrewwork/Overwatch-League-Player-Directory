@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import Table from 'react-bootstrap/Table';
 import TableHeader from './tableHeader';
 import TableBody from './tableBody';
+import owStats from '../data/owStats';
 
 let playerdata = null;
 let sortCategory = 'username';
@@ -36,6 +37,13 @@ function TableMain () {
       .then (res => res.json())
       .then (results => {
         newPlayers = results.results;
+        for (let player of newPlayers) {
+          let stats = owStats();
+
+          player.role = stats.role;
+          player.hero = stats.hero;
+          player.rank = stats.rank;
+        }
         console.log("newPlayers: ", newPlayers);
       })
       .then (results => {

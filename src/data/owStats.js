@@ -42,15 +42,17 @@ function getRandomHero () {
     return heros[selectedHeroIndex];
 }
 
-function getRandomOWPlayerData () {
+function getRandomOWPlayerStats () {
     let hero = getRandomHero();
     let rank = getRandomRank();
 
-    return {
+    let stats = {
         role: hero.role,
         hero: hero.name,
         rank: rank,
     };
+
+    return stats;
 }
 
-export default getRandomOWPlayerData;
+export default getRandomOWPlayerStats;
