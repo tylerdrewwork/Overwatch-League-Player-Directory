@@ -33,6 +33,18 @@ const heros = [
     { role: "Support", name: "Zenyatta" },
 ]
 
+const teams = [
+    "San Francisco Shock",
+    "New York Excelsior",
+    "Shanghai Dragons",
+    "Dallas Fuel",
+    "Los Angeles Gladiators",
+    "Seoul Dynasty",
+    "London Spitfire",
+    "Los Angeles Valiant",
+    "Houston Outlaws"
+]
+
 function getRandomRank () {
     return Math.floor(Math.random() * 5000);
 }
@@ -42,14 +54,21 @@ function getRandomHero () {
     return heros[selectedHeroIndex];
 }
 
+function getRandomTeam () {
+    let selectedTeamIndex = Math.Floor(Math.random() * teams.length);
+    return teams[selectedTeamIndex];
+}
+
 function getRandomOWPlayerStats () {
     let hero = getRandomHero();
     let rank = getRandomRank();
+    let team = getRandomTeam();
 
     let stats = {
         role: hero.role,
         hero: hero.name,
         rank: rank,
+        team: team,
     };
 
     return stats;

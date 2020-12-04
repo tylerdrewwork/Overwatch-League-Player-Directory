@@ -8,13 +8,13 @@ function TableBody (props) {
             props.players.map(player => {
                 return (
                     <Entry 
-                    key = {player.id}
-                    username = {player.username}
-                    firstName = {player.firstName}
-                    lastName = {player.lastName}
-                    competitiveRank = {player.competitiveRank}
-                    mainRole = {player.mainRole}
-                    mainHero = {player.mainHero}
+                    key = {player.login.uuid}
+                    username = {player.login.username}
+                    firstName = {player.name.first}
+                    lastName = {player.name.last}
+                    competitiveRank = {player.rank}
+                    mainRole = {player.role}
+                    mainHero = {player.hero}
                     team = {player.team}
                     link = {player.link}
                     />

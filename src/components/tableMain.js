@@ -46,9 +46,8 @@ function TableMain () {
         }
         console.log("newPlayers: ", newPlayers);
       })
-      .then (results => {
-        playerdata = results.results;
-        setPlayers(playerdata);
+      .then (() => {
+        setPlayers(newPlayers);
       })
   }, []);
 
