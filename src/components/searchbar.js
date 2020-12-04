@@ -7,12 +7,11 @@ function Searchbar() {
         //     testty
         // </div>
         <Form>
-            test
             <Form.Group>
-                <Form.Label>Search</Form.Label>
+                <Form.Label>Search Query</Form.Label>
                 <Form.Control as="textarea" rows={1}/>
                 <Form.Text>
-                    awe yeah
+                    Search Test
                 </Form.Text>
             </Form.Group>
             <Form.Group>
@@ -24,7 +23,7 @@ function Searchbar() {
                     <option>4</option> 
                 </Form.Control>
                 <Form.Text>
-                    test
+                    Category Text
                 </Form.Text>
             </Form.Group>
         </Form>
