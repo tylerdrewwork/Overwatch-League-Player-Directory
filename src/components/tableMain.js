@@ -6,37 +6,8 @@ import TableHeader from './tableHeader';
 import TableBody from './tableBody';
 import owStats from '../data/owStats';
 import Searchbar from './searchbar';
+import CATEGORIES from '../data/categoriesContext';
 
-const CATEGORIES = {
-  team: {
-    display: "Team",
-    value: "team",
-    path: "team",
-  },
-  username: {
-    display: "Username",
-    value: "username",
-    path: ['login', 'username'],
-  },
-  firstName : {
-
-  },
-  lastName: {
-
-  },
-  nationality: {
-
-  },
-  rank: {
-
-  },
-  role: {
-
-  },
-  hero: {
-
-  },
-}
 let sortCategory = 'username';
 let sortDirection = 'descending';
 let playerData;
@@ -45,10 +16,6 @@ function TableMain () {
   const [players, setPlayers] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchCategory, setSearchCategory] = useState('team');
-
-  useEffect(() => {
-    console.log("Players updated! Re-rendering.");
-  }, [players])
 
   useEffect(() => {
     if (players !== null && searchQuery !== '') {
@@ -114,7 +81,7 @@ function TableMain () {
             <TableHeader text="Main Hero" category="mainHero" sortMethod={sortByCategory}/>
           </tr>
         </thead>
-        <TableBody players={players}/>
+        <TableBody players={players} categories={CATEGORIES}/>
       </Table>
       </>
     );
