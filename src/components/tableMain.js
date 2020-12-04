@@ -21,8 +21,8 @@ function TableMain () {
     if (players !== null && searchQuery !== '') {
       let searchedPlayers = playerData.filter(player => {
         // let lowercasePlayerCategory = player[CATEGORIES[searchCategory].path].toLowerCase();
-        let lowercasePlayerCategory = _.get(player, CATEGORIES[searchCategory].path).toLowerCase();
-        if(lowercasePlayerCategory.includes(searchQuery)) {
+        let lowercasePlayerStat = getPlayerStat(player, searchCategory).toLowerCase();
+        if(lowercasePlayerStat.includes(searchQuery)) {
           return true;
         } else { 
           return false; 
@@ -81,7 +81,7 @@ function TableMain () {
             <TableHeader text="Main Hero" category="mainHero" sortMethod={sortByCategory}/>
           </tr>
         </thead>
-        <TableBody players={players} categories={CATEGORIES}/>
+        <TableBody players={players}/>
       </Table>
       </>
     );
@@ -95,11 +95,11 @@ function TableMain () {
       sortDirection = 'descending';
       sortCategory = category;
     }
-
+    
     let catA, catB;
     let sortedPlayers = players.sort(function(a, b) {
-      catA = a[category];
-      catB = b[category];
+      catA = getPlayerStat(a, category);
+      catB = getPlayerStat(b, category);
 
       // If either category is null, then sort accordingly
       if(catA === null || catB === null) {
@@ -156,6 +156,10 @@ function TableMain () {
   function handleSearchCategory (event) {
     console.log("event: ", event.target.value);
     setSearchCategory(event.target.value);
+  }
+
+  function getPlayerStat (player, category) {
+    return _.get(player, CATEGORIES[category].path);
   }
 }
 

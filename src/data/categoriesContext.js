@@ -19,24 +19,24 @@ const CATEGORIES = {
       value: "lastName",
       path: ['name', 'last'],
     },
-    nationality: {
+    nat: {
       display: "Nationality",
       value: "nat",
       path: 'nat',
     },
-    rank: {
+    competitiveRank: {
       display: "Rank",
       value: "competitiveRank",
       path: 'rank',
     },
-    role: {
+    mainRole: {
       display: "Role",
-      value: "role",
+      value: "mainRole",
       path: 'role',
     },
-    hero: {
+    mainHero: {
       display: "Main Hero",
-      value: "hero",
+      value: "mainHero",
       path: 'hero',
     },
 }
