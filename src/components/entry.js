@@ -20,23 +20,12 @@ function Entry(props) {
                 }
             }
         }
-
-        // stats.push(`key = ${props.key}`)
-
         return stats;
     }
 
     return (
         <tr>
             {getCategoryStats()}
-            {/* <td>{props.team}</td>
-            <td>{getUsernameWithLink(props.link, props.username)}</td>
-            <td>{props.firstName}</td>
-            <td>{props.lastName}</td>
-            <td>{props.nat}</td>
-            <td>{props.competitiveRank}</td>
-            <td>{props.mainRole}</td>
-            <td>{props.mainHero}</td> */}
         </tr>
     );
 }

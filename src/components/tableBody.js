@@ -16,7 +16,6 @@ function TableBody (props) {
                     username = {getPlayerStat(player, 'username')}
                     firstName = {getPlayerStat(player, 'firstName')}
                     lastName = {getPlayerStat(player, 'lastName')}
-                    competitiveRank = {getPlayerStat(player, 'competitiveRank')}
                     mainRole = {getPlayerStat(player, 'mainRole')}
                     mainHero = {getPlayerStat(player, 'mainHero')}
                     team = {getPlayerStat(player, 'team')}
