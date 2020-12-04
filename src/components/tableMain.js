@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from "react";
-import playerdata from "../data/userseeds.json";
+// import playerdata from "../data/userseeds.json";
 import Table from 'react-bootstrap/Table';
 import TableHeader from './tableHeader';
 import TableBody from './tableBody';
 
+let playerdata = null;
 let sortCategory = 'username';
 let sortDirection = 'descending';
 let searchQuery = null;
 
 function TableMain () {
-  let [players, setPlayers] = useState([...playerdata]);
+  const [players, setPlayers] = useState(null);
+  // const [isLoaded, setIsLoaded] = useState(false);
   // let [sortOptions, setSortOptions] = useState({
   //   category : 'username',
   //   direction : 'descending',
@@ -24,25 +26,49 @@ function TableMain () {
   }, [players])
 
   useEffect(() => {
-
+    
   }, [sortCategory, sortDirection, searchQuery]);
 
-  return (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <TableHeader text="Username" category="username" sortMethod={sortByCategory}/>
-          <TableHeader text="First Name" category="firstName" sortMethod={sortByCategory}/>
-          <TableHeader text="Last Name" category="lastName" sortMethod={sortByCategory}/>
-          <TableHeader text="Rank" category="competitiveRank" sortMethod={sortByCategory}/>
-          <TableHeader text="Main Role" category="mainRole" sortMethod={sortByCategory}/>
-          <TableHeader text="Main Hero" category="mainHero" sortMethod={sortByCategory}/>
-          <TableHeader text="Team" category="team" sortMethod={sortByCategory}/>
-        </tr>
-      </thead>
-      <TableBody players={players}/>
-    </Table>
-  );
+  // ANCHOR API CALL!
+  useEffect(() => {
+    let newPlayers;
+    fetch("https://randomuser.me/api/?results=30&inc=name,nat,login,")
+      .then (res => res.json())
+      .then (results => {
+        newPlayers = results.results;
+        console.log("newPlayers: ", newPlayers);
+      })
+      .then (results => {
+        playerdata = results.results;
+        setPlayers(playerdata);
+      })
+  }, []);
+
+  if (players === null) { 
+    return (
+      <div>
+        Loading...
+      </div>
+    )
+  } else {
+    return (
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <TableHeader text="Username" category="username" sortMethod={sortByCategory}/>
+            <TableHeader text="First Name" category="firstName" sortMethod={sortByCategory}/>
+            <TableHeader text="Last Name" category="lastName" sortMethod={sortByCategory}/>
+            <TableHeader text="Rank" category="competitiveRank" sortMethod={sortByCategory}/>
+            <TableHeader text="Main Role" category="mainRole" sortMethod={sortByCategory}/>
+            <TableHeader text="Main Hero" category="mainHero" sortMethod={sortByCategory}/>
+            <TableHeader text="Team" category="team" sortMethod={sortByCategory}/>
+          </tr>
+        </thead>
+        <TableBody players={players}/>
+      </Table>
+    );
+  }
+
 
   function sortByCategory (category) {
     if (sortCategory === category) {
@@ -82,7 +108,7 @@ function TableMain () {
     if (typeof catA === "number") { 
       sortedPlayers.reverse(); 
     } 
-    
+
     if (sortDirection === "ascending") {
       sortedPlayers.reverse();
     }
