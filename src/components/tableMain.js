@@ -1,16 +1,45 @@
 import React, {useState, useEffect} from "react";
 // import playerdata from "../data/userseeds.json";
+import _ from 'underscore';
 import Table from 'react-bootstrap/Table';
 import TableHeader from './tableHeader';
 import TableBody from './tableBody';
 import owStats from '../data/owStats';
 import Searchbar from './searchbar';
 
-// let playerdata = null;
+const CATEGORIES = {
+  team: {
+    display: "Team",
+    value: "team",
+    path: "team",
+  },
+  username: {
+    display: "Username",
+    value: "username",
+    path: ['login', 'username'],
+  },
+  firstName : {
+
+  },
+  lastName: {
+
+  },
+  nationality: {
+
+  },
+  rank: {
+
+  },
+  role: {
+
+  },
+  hero: {
+
+  },
+}
 let sortCategory = 'username';
 let sortDirection = 'descending';
 let playerData;
-// let searchQuery = null;
 
 function TableMain () {
   const [players, setPlayers] = useState(null);
@@ -22,13 +51,19 @@ function TableMain () {
   }, [players])
 
   useEffect(() => {
-    if (players !== null) {
-      console.log(searchQuery, searchCategory);
-      let searchedPlayers = playerData.filter(player => player[searchCategory].includes(searchQuery));
-      console.log("SearchedPlayers: ", searchedPlayers);
+    if (players !== null && searchQuery !== '') {
+      let searchedPlayers = playerData.filter(player => {
+        // let lowercasePlayerCategory = player[CATEGORIES[searchCategory].path].toLowerCase();
+        let lowercasePlayerCategory = _.get(player, CATEGORIES[searchCategory].path).toLowerCase();
+        if(lowercasePlayerCategory.includes(searchQuery)) {
+          return true;
+        } else { 
+          return false; 
+        }
+      });
       setPlayers(searchedPlayers);
     }
-  }, [searchQuery, searchCategory]);
+  }, [searchQuery]);
 
   // ANCHOR API CALL!
   useEffect(() => {
@@ -61,7 +96,11 @@ function TableMain () {
   } else {
     return (
       <>
-      <Searchbar searchMethod={handleSearchQuery} categoryMethod={handleSearchCategory} query={searchQuery}/>
+      <Searchbar 
+        searchMethod={handleSearchQuery} 
+        categoryMethod={handleSearchCategory} 
+        category={searchCategory} 
+        query={searchQuery}/>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -143,10 +182,12 @@ function TableMain () {
   }
 
   function handleSearchQuery (event) {
-    setSearchQuery(event.target.value);
+    let query = event.target.value.toLowerCase();
+    setSearchQuery(query);
   }
 
   function handleSearchCategory (event) {
+    console.log("event: ", event.target.value);
     setSearchCategory(event.target.value);
   }
 }

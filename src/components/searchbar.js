@@ -11,9 +11,9 @@ function Searchbar(props) {
             </Form.Group>
             <Form.Group controlId="formCategory">
                 <Form.Label>Search Category</Form.Label>
-                <Form.Control as="select"> 
-                    <option>1</option> 
-                    <option>2</option> 
+                <Form.Control as="select" value={props.category} onChange={props.categoryMethod}> 
+                    <option value={'team'}>Team</option> 
+                    <option value={'username'}>Username</option> 
                     <option>3</option> 
                     <option>4</option> 
                 </Form.Control>
