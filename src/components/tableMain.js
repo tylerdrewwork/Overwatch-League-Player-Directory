@@ -4,6 +4,7 @@ import Table from 'react-bootstrap/Table';
 import TableHeader from './tableHeader';
 import TableBody from './tableBody';
 import owStats from '../data/owStats';
+import Searchbar from './searchbar';
 
 // let playerdata = null;
 let sortCategory = 'username';
@@ -12,15 +13,6 @@ let searchQuery = null;
 
 function TableMain () {
   const [players, setPlayers] = useState(null);
-  // const [isLoaded, setIsLoaded] = useState(false);
-  // let [sortOptions, setSortOptions] = useState({
-  //   category : 'username',
-  //   direction : 'descending',
-  //   searchQuery : null
-  // })
-  // const [sortCategory, setSortCategory] = useState("username");
-  // const [sortDirection, setSortDirection] = useState("descending");
-  // const [searchQuery, setSearchQuery] = useState(null);
 
   useEffect(() => {
     console.log("Players updated! Re-rendering.");
@@ -60,6 +52,8 @@ function TableMain () {
     )
   } else {
     return (
+      <>
+      <Searchbar />
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -75,6 +69,7 @@ function TableMain () {
         </thead>
         <TableBody players={players}/>
       </Table>
+      </>
     );
   }
 
