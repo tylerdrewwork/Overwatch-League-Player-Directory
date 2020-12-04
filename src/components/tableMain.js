@@ -9,10 +9,11 @@ import Searchbar from './searchbar';
 // let playerdata = null;
 let sortCategory = 'username';
 let sortDirection = 'descending';
-let searchQuery = null;
+// let searchQuery = null;
 
 function TableMain () {
   const [players, setPlayers] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(null);
 
   useEffect(() => {
     console.log("Players updated! Re-rendering.");
@@ -20,7 +21,7 @@ function TableMain () {
 
   useEffect(() => {
     
-  }, [sortCategory, sortDirection, searchQuery]);
+  }, [searchQuery]);
 
   // ANCHOR API CALL!
   useEffect(() => {
@@ -53,7 +54,7 @@ function TableMain () {
   } else {
     return (
       <>
-      <Searchbar />
+      <Searchbar searchMethod={updateSearchQuery} query={searchQuery}/>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -132,6 +133,11 @@ function TableMain () {
     } else {
       sortDirection = "ascending";
     }
+  }
+
+  function updateSearchQuery (event) {
+    setSearchQuery(event.target.value);
+    // do something
   }
 }
 
