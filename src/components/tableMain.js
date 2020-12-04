@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from "react";
 // import playerdata from "../data/userseeds.json";
-import _ from 'underscore';
 import Table from 'react-bootstrap/Table';
-import TableHeader from './tableHeader';
+import TableHead from './tableHead';
 import TableBody from './tableBody';
-import owStats from '../data/owStats';
+// import owStats from '../data/owStats';
 import Searchbar from './searchbar';
-import CATEGORIES from '../data/categoriesContext';
+import getPlayerStat from '../utils/getPlayerStat';
 
 let sortCategory = 'username';
 let sortDirection = 'descending';
@@ -33,59 +32,39 @@ function TableMain () {
   }, [searchQuery]);
 
   // ANCHOR API CALL!
+  // useEffect(() => {
+  //   fetch("https://randomuser.me/api/?results=30&inc=name,nat,login,")
+  //     .then (res => res.json())
+  //     .then (results => {
+  //       playerData = results.results;
+  //       for (let player of playerData) {
+  //         let stats = owStats();
+
+  //         player.role = stats.role;
+  //         player.hero = stats.hero;
+  //         player.rank = stats.rank;
+  //         player.team = stats.team;
+  //       }
+  //       console.log("playerData: ", playerData);
+  //     })
+  //     .then (() => {
+  //       setPlayers(playerData);
+  //     })
+  // }, []);
   useEffect(() => {
-    fetch("https://randomuser.me/api/?results=30&inc=name,nat,login,")
+    fetch("https://api.overwatchleague.com/players")
       .then (res => res.json())
       .then (results => {
-        playerData = results.results;
-        for (let player of playerData) {
-          let stats = owStats();
-
-          player.role = stats.role;
-          player.hero = stats.hero;
-          player.rank = stats.rank;
-          player.team = stats.team;
-        }
-        console.log("playerData: ", playerData);
+        playerData = results.content;
+        console.log("pdata", playerData);
       })
       .then (() => {
         setPlayers(playerData);
       })
   }, []);
 
-  // ANCHOR Return JSX!
-  if (players === null) { 
-    return (
-      <div>
-        Loading...
-      </div>
-    )
-  } else {
-    return (
-      <>
-      <Searchbar 
-        searchMethod={handleSearchQuery} 
-        categoryMethod={handleSearchCategory} 
-        category={searchCategory} 
-        query={searchQuery}/>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <TableHeader text="Team" category="team" sortMethod={sortByCategory}/>
-            <TableHeader text="Username" category="username" sortMethod={sortByCategory}/>
-            <TableHeader text="First Name" category="firstName" sortMethod={sortByCategory}/>
-            <TableHeader text="Last Name" category="lastName" sortMethod={sortByCategory}/>
-            <TableHeader text="Nationality" category="nat" sortMethod={sortByCategory}/>
-            <TableHeader text="Rank" category="competitiveRank" sortMethod={sortByCategory}/>
-            <TableHeader text="Main Role" category="mainRole" sortMethod={sortByCategory}/>
-            <TableHeader text="Main Hero" category="mainHero" sortMethod={sortByCategory}/>
-          </tr>
-        </thead>
-        <TableBody players={players}/>
-      </Table>
-      </>
-    );
-  }
+
+  
 
 
   function sortByCategory (category) {
@@ -158,8 +137,27 @@ function TableMain () {
     setSearchCategory(event.target.value);
   }
 
-  function getPlayerStat (player, category) {
-    return _.get(player, CATEGORIES[category].path);
+  // ANCHOR Return JSX!
+  if (players === null) { 
+    return (
+      <div>
+        Loading...
+      </div>
+    )
+  } else {
+    return (
+      <>
+      <Searchbar 
+        searchMethod={handleSearchQuery} 
+        categoryMethod={handleSearchCategory} 
+        category={searchCategory} 
+        query={searchQuery}/>
+      <Table striped bordered hover>
+        <TableHead sortMethod={sortByCategory}/>
+        <TableBody players={players}/>
+      </Table>
+      </>
+    );
   }
 }
 

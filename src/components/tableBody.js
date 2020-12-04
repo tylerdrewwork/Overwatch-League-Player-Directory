@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Entry from './entry';
-import CATEGORIES from '../data/categoriesContext';
+import getPlayerStat from '../utils/getPlayerStat';
 
 function TableBody (props) {
     function renderPlayers () {
@@ -11,30 +11,30 @@ function TableBody (props) {
                 return (
                     <Entry 
                     // {...getCategoryAttributes()}
-                    key = {player.login.uuid}
-                    link = {player.link}
-                    username = {player.login.username}
-                    firstName = {player.name.first}
-                    lastName = {player.name.last}
-                    competitiveRank = {player.rank}
-                    mainRole = {player.role}
-                    mainHero = {player.hero}
-                    team = {player.team}
-                    nat = {player.nat}
+                    key = {getPlayerStat(player, 'id')}
+                    link = {getPlayerStat(player, 'link')}
+                    username = {getPlayerStat(player, 'username')}
+                    firstName = {getPlayerStat(player, 'firstName')}
+                    lastName = {getPlayerStat(player, 'lastName')}
+                    competitiveRank = {getPlayerStat(player, 'competitiveRank')}
+                    mainRole = {getPlayerStat(player, 'mainRole')}
+                    mainHero = {getPlayerStat(player, 'mainHero')}
+                    team = {getPlayerStat(player, 'team')}
+                    nat = {getPlayerStat(player, 'nat')}
+                    headshot = {getPlayerStat(player, 'headshot')}
                     />
                 )
             })
         )
     }
-
-    function getCategoryAttributes () {
-        let attributes = [];
-        for (const category in CATEGORIES) {
-            attributes.push(`${CATEGORIES[category].value} = ${CATEGORIES[category].path}`);
-        }
-        console.log("Attributes: ", attributes);
-        return attributes;
-    }
+//     function getCategoryAttributes () {
+//         let attributes = [];
+//         for (const category in CATEGORIES) {
+//             attributes.push(`${CATEGORIES[category].value} = ${CATEGORIES[category].path}`);
+//         }
+//         console.log("Attributes: ", attributes);
+//         return attributes;
+//     }
 
     return (
         <tbody>
