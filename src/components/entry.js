@@ -1,15 +1,17 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 function Entry(props) {
     return (
         <tr>
+            <td>{props.team}</td>
             <td>{getUsernameWithLink(props.link, props.username)}</td>
             <td>{props.firstName}</td>
             <td>{props.lastName}</td>
+            <td>{props.nat}</td>
             <td>{props.competitiveRank}</td>
             <td>{props.mainRole}</td>
             <td>{props.mainHero}</td>
-            <td>{props.team}</td>
         </tr>
     );
 }

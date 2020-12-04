@@ -55,7 +55,7 @@ function getRandomHero () {
 }
 
 function getRandomTeam () {
-    let selectedTeamIndex = Math.Floor(Math.random() * teams.length);
+    let selectedTeamIndex = Math.floor(Math.random() * teams.length);
     return teams[selectedTeamIndex];
 }
 

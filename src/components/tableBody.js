@@ -17,6 +17,7 @@ function TableBody (props) {
                     mainHero = {player.hero}
                     team = {player.team}
                     link = {player.link}
+                    nat = {player.nat}
                     />
                 )
             })

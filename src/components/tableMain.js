@@ -5,7 +5,7 @@ import TableHeader from './tableHeader';
 import TableBody from './tableBody';
 import owStats from '../data/owStats';
 
-let playerdata = null;
+// let playerdata = null;
 let sortCategory = 'username';
 let sortDirection = 'descending';
 let searchQuery = null;
@@ -43,6 +43,7 @@ function TableMain () {
           player.role = stats.role;
           player.hero = stats.hero;
           player.rank = stats.rank;
+          player.team = stats.team;
         }
         console.log("newPlayers: ", newPlayers);
       })
@@ -62,13 +63,14 @@ function TableMain () {
       <Table striped bordered hover>
         <thead>
           <tr>
+            <TableHeader text="Team" category="team" sortMethod={sortByCategory}/>
             <TableHeader text="Username" category="username" sortMethod={sortByCategory}/>
             <TableHeader text="First Name" category="firstName" sortMethod={sortByCategory}/>
             <TableHeader text="Last Name" category="lastName" sortMethod={sortByCategory}/>
+            <TableHeader text="Nationality" category="nat" sortMethod={sortByCategory}/>
             <TableHeader text="Rank" category="competitiveRank" sortMethod={sortByCategory}/>
             <TableHeader text="Main Role" category="mainRole" sortMethod={sortByCategory}/>
             <TableHeader text="Main Hero" category="mainHero" sortMethod={sortByCategory}/>
-            <TableHeader text="Team" category="team" sortMethod={sortByCategory}/>
           </tr>
         </thead>
         <TableBody players={players}/>
@@ -86,7 +88,7 @@ function TableMain () {
     }
 
     let catA, catB;
-    let sortedPlayers = playerdata.sort(function(a, b) {
+    let sortedPlayers = players.sort(function(a, b) {
       catA = a[category];
       catB = b[category];
 
