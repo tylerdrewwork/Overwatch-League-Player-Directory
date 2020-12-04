@@ -9,28 +9,34 @@ import Searchbar from './searchbar';
 // let playerdata = null;
 let sortCategory = 'username';
 let sortDirection = 'descending';
+let playerData;
 // let searchQuery = null;
 
 function TableMain () {
   const [players, setPlayers] = useState(null);
-  const [searchQuery, setSearchQuery] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchCategory, setSearchCategory] = useState('team');
 
   useEffect(() => {
     console.log("Players updated! Re-rendering.");
   }, [players])
 
   useEffect(() => {
-    
-  }, [searchQuery]);
+    if (players !== null) {
+      console.log(searchQuery, searchCategory);
+      let searchedPlayers = playerData.filter(player => player[searchCategory].includes(searchQuery));
+      console.log("SearchedPlayers: ", searchedPlayers);
+      setPlayers(searchedPlayers);
+    }
+  }, [searchQuery, searchCategory]);
 
   // ANCHOR API CALL!
   useEffect(() => {
-    let newPlayers;
     fetch("https://randomuser.me/api/?results=30&inc=name,nat,login,")
       .then (res => res.json())
       .then (results => {
-        newPlayers = results.results;
-        for (let player of newPlayers) {
+        playerData = results.results;
+        for (let player of playerData) {
           let stats = owStats();
 
           player.role = stats.role;
@@ -38,13 +44,14 @@ function TableMain () {
           player.rank = stats.rank;
           player.team = stats.team;
         }
-        console.log("newPlayers: ", newPlayers);
+        console.log("playerData: ", playerData);
       })
       .then (() => {
-        setPlayers(newPlayers);
+        setPlayers(playerData);
       })
   }, []);
 
+  // ANCHOR Return JSX!
   if (players === null) { 
     return (
       <div>
@@ -54,7 +61,7 @@ function TableMain () {
   } else {
     return (
       <>
-      <Searchbar searchMethod={updateSearchQuery} query={searchQuery}/>
+      <Searchbar searchMethod={handleSearchQuery} categoryMethod={handleSearchCategory} query={searchQuery}/>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -135,9 +142,12 @@ function TableMain () {
     }
   }
 
-  function updateSearchQuery (event) {
+  function handleSearchQuery (event) {
     setSearchQuery(event.target.value);
-    // do something
+  }
+
+  function handleSearchCategory (event) {
+    setSearchCategory(event.target.value);
   }
 }
 
