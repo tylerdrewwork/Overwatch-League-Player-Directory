@@ -17,9 +17,8 @@ function TableMain () {
   const [searchCategory, setSearchCategory] = useState('team');
 
   useEffect(() => {
-    if (players !== null && searchQuery !== '') {
+    if (players !== null) {
       let searchedPlayers = playerData.filter(player => {
-        // let lowercasePlayerCategory = player[CATEGORIES[searchCategory].path].toLowerCase();
         let lowercasePlayerStat = getPlayerStat(player, searchCategory).toLowerCase();
         if(lowercasePlayerStat.includes(searchQuery)) {
           return true;

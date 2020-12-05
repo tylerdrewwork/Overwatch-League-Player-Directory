@@ -14,7 +14,7 @@ function TableHead (props) {
                     text={thisCat.display} 
                     category={thisCat.value} 
                     sortMethod={props.sortMethod}
-                    key={tableHeaderID}
+                    key={"tableHeader-" + tableHeaderID}
                     />)
             }
             tableHeaderID++;
