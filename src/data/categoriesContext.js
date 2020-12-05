@@ -1,4 +1,16 @@
+import _ from 'underscore';
+
 const CATEGORIES = {
+    getCategories: (cb) => {
+      let JSX = [];
+      for (const category in CATEGORIES) {
+        let thisCat = CATEGORIES[category]; // thisCat is an Object that includes display, value, and path
+        if (thisCat.display !== null && !_.isFunction(thisCat)) { 
+          JSX.push(cb(thisCat));
+        }
+      }
+      return JSX;
+    },
     id: {
         display: null, // What is shown on the category HTML
         value: "id", // What is used as a value when trying to read this
