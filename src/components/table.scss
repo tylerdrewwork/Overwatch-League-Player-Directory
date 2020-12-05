@@ -1,0 +1,86 @@
+$clr-white: #ffffff;
+$clr-orange: #f99e1a;
+$clr-gray: 	#43484c;
+$clr-navy: #405275;
+$clr-blue: #218ffe;
+$clr-black: #000000;
+
+#root {
+    background-color: $clr-white;
+}
+
+.container {
+    background-color: $clr-white;
+}
+
+header {
+    text-align: center;
+    font-size: 250%;
+}
+
+// SECTION Search Form
+
+form {
+    display: flex;
+
+    .form-group {
+        width: 50%;
+
+        .form-label {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+// SECTION Table Header
+
+thead {
+    .header-btn {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// SECTION Table Body
+
+tbody {
+    color: $clr-white;
+    background-color: $clr-gray;
+}
+
+.tr {
+    color: $clr-gray;
+    // tr:nth-of-type(odd) {
+
+    // }
+}
+
+// SECTION Entries
+
+.entry {
+
+    td {
+        vertical-align: middle !important;
+    }
+}
+
+.entry-headshot {
+    padding: 0 !important;
+    position: relative;
+    
+    .entry-headshot-clr {
+        position: absolute;
+        height: 0%;
+        width: 0%;
+        border-bottom: 128px solid red;
+        border-left: 128px solid transparent;
+    }
+
+    img {
+        // width: 100%;
+        // height: 100%;
+        position: relative;
+        // bottom: -12px;
+    }
+}

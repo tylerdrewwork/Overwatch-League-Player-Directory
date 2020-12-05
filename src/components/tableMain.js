@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from "react";
-// import playerdata from "../data/userseeds.json";
 import Table from 'react-bootstrap/Table';
 import TableHead from './tableHead';
 import TableBody from './tableBody';
-// import owStats from '../data/owStats';
 import Searchbar from './searchbar';
 import getPlayerStat from '../utils/getPlayerStat';
+import './table.css';
 
 let sortCategory = 'username';
 let sortDirection = 'descending';
@@ -132,8 +131,10 @@ function TableMain () {
         category={searchCategory} 
         query={searchQuery}/>
       <Table striped bordered hover>
-        <TableHead sortMethod={sortByCategory}/>
-        <TableBody players={players}/>
+        <TableHead 
+          sortMethod={sortByCategory}/>
+        <TableBody 
+          players={players}/>
       </Table>
       </>
     );

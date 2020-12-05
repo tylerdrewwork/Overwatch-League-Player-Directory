@@ -31,6 +31,16 @@ const CATEGORIES = {
       value: "team",
       path: ["teams", 0, 'team', 'name'],
     },
+    teamColorPrimary: {
+      display: null,
+      value: "teamColorPrimary",
+      path: ["teams", 0, 'team', 'primaryColor'],
+    },
+    teamColorSecondary: {
+      display: null,
+      value: "teamColorSecondary",
+      path: ["teams", 0, 'team', 'secondaryColor'],
+    },
     username: {
       display: "Username",
       value: "username",

@@ -20,6 +20,8 @@ function TableBody (props) {
                     mainRole = {getPlayerStat(player, 'mainRole')}
                     mainHero = {getPlayerStat(player, 'mainHero')}
                     team = {getPlayerStat(player, 'team')}
+                    teamColorPrimary = {getPlayerStat(player, 'teamColorPrimary')}
+                    teamColorSecondary = {getPlayerStat(player, 'teamColorSecondary')}
                     nat = {getPlayerStat(player, 'nat')}
                     headshot = {getPlayerStat(player, 'headshot')}
                     />
