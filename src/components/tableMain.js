@@ -31,26 +31,6 @@ function TableMain () {
     }
   }, [searchQuery]);
 
-  // ANCHOR API CALL!
-  // useEffect(() => {
-  //   fetch("https://randomuser.me/api/?results=30&inc=name,nat,login,")
-  //     .then (res => res.json())
-  //     .then (results => {
-  //       playerData = results.results;
-  //       for (let player of playerData) {
-  //         let stats = owStats();
-
-  //         player.role = stats.role;
-  //         player.hero = stats.hero;
-  //         player.rank = stats.rank;
-  //         player.team = stats.team;
-  //       }
-  //       console.log("playerData: ", playerData);
-  //     })
-  //     .then (() => {
-  //       setPlayers(playerData);
-  //     })
-  // }, []);
   useEffect(() => {
     fetch("https://api.overwatchleague.com/players")
       .then (res => res.json())

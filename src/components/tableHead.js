@@ -6,11 +6,18 @@ import CATEGORIES from '../data/categoriesContext';
 function TableHead (props) {
     function getCategories () {
         let categories = [];
+        let tableHeaderID = 0;
         for (const category in CATEGORIES) {
             let thisCat = CATEGORIES[category];
             if (thisCat.display !== null) {
-                categories.push(<TableHeader text={thisCat.display} category={thisCat.value} sortMethod={props.sortMethod}/>)
+                categories.push(<TableHeader 
+                    text={thisCat.display} 
+                    category={thisCat.value} 
+                    sortMethod={props.sortMethod}
+                    key={tableHeaderID}
+                    />)
             }
+            tableHeaderID++;
         }
         return categories;
     }

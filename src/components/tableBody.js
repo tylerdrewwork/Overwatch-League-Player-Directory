@@ -12,6 +12,7 @@ function TableBody (props) {
                     <Entry 
                     // {...getCategoryAttributes()}
                     key = {getPlayerStat(player, 'id')}
+                    id = {getPlayerStat(player, 'id')}
                     link = {getPlayerStat(player, 'link')}
                     username = {getPlayerStat(player, 'username')}
                     firstName = {getPlayerStat(player, 'firstName')}

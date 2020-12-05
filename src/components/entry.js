@@ -7,16 +7,18 @@ function Entry(props) {
         let stats = [];
 
         for (const category in CATEGORIES) {
-            let thisCat = CATEGORIES[category];
+            let thisCat = CATEGORIES[category]; // thisCat is an Object that includes display, value, and path
+            let thisKey = "entry-" + props.id + "-" + thisCat.value;
             if (thisCat.display !== null) {
                 switch (thisCat.value) {
                     case "headshot":
-                        stats.push(<td><img 
+                        stats.push(<td key={thisKey}><img 
                             src={props[thisCat.value]}
-                            width="100"></img></td>)
+                            width="100"
+                            ></img></td>)
                         break;
                     default:
-                        stats.push(<td>{props[thisCat.value]}</td>);
+                        stats.push(<td key={thisKey}>{props[thisCat.value]}</td>);
                 }
             }
         }
