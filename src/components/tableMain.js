@@ -19,8 +19,8 @@ function TableMain () {
   useEffect(() => {
     if (players !== null) {
       let searchedPlayers = playerData.filter(player => {
-        let lowercasePlayerStat = getPlayerStat(player, searchCategory).toLowerCase();
-        if(lowercasePlayerStat.includes(searchQuery)) {
+        let playerStat = getPlayerStat(player, searchCategory);
+        if(playerStat !== undefined && playerStat.toLowerCase().includes(searchQuery)) {
           return true;
         } else { 
           return false; 
@@ -60,10 +60,10 @@ function TableMain () {
       catB = getPlayerStat(b, category);
 
       // If either category is null, then sort accordingly
-      if(catA === null || catB === null) {
-        if (catA === null && catB === null) { return 0; } 
-        else if (catA === null) { return 1; } 
-        else if (catB === null) { return -1; }
+      if(catA === undefined || catB === undefined) {
+        if (catA === undefined && catB === undefined) { return 0; } 
+        else if (catA === undefined) { return 1; } 
+        else if (catB === undefined) { return -1; }
       }
 
       // If neither are null, then sort accordingly.
