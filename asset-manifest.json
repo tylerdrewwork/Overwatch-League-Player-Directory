@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/Employee-Directory/static/css/main.3060207d.chunk.css",
-    "main.js": "/Employee-Directory/static/js/main.78657862.chunk.js",
-    "main.js.map": "/Employee-Directory/static/js/main.78657862.chunk.js.map",
-    "runtime-main.js": "/Employee-Directory/static/js/runtime-main.000fb1da.js",
-    "runtime-main.js.map": "/Employee-Directory/static/js/runtime-main.000fb1da.js.map",
-    "static/css/2.1a02f21c.chunk.css": "/Employee-Directory/static/css/2.1a02f21c.chunk.css",
-    "static/js/2.6683dde9.chunk.js": "/Employee-Directory/static/js/2.6683dde9.chunk.js",
-    "static/js/2.6683dde9.chunk.js.map": "/Employee-Directory/static/js/2.6683dde9.chunk.js.map",
-    "static/js/3.f1363c1a.chunk.js": "/Employee-Directory/static/js/3.f1363c1a.chunk.js",
-    "static/js/3.f1363c1a.chunk.js.map": "/Employee-Directory/static/js/3.f1363c1a.chunk.js.map",
-    "index.html": "/Employee-Directory/index.html",
-    "static/css/2.1a02f21c.chunk.css.map": "/Employee-Directory/static/css/2.1a02f21c.chunk.css.map",
-    "static/css/main.3060207d.chunk.css.map": "/Employee-Directory/static/css/main.3060207d.chunk.css.map",
-    "static/js/2.6683dde9.chunk.js.LICENSE.txt": "/Employee-Directory/static/js/2.6683dde9.chunk.js.LICENSE.txt"
+    "main.css": "/Overwatch-League-Player-Directory/static/css/main.3060207d.chunk.css",
+    "main.js": "/Overwatch-League-Player-Directory/static/js/main.40104157.chunk.js",
+    "main.js.map": "/Overwatch-League-Player-Directory/static/js/main.40104157.chunk.js.map",
+    "runtime-main.js": "/Overwatch-League-Player-Directory/static/js/runtime-main.bdc0eeef.js",
+    "runtime-main.js.map": "/Overwatch-League-Player-Directory/static/js/runtime-main.bdc0eeef.js.map",
+    "static/css/2.1a02f21c.chunk.css": "/Overwatch-League-Player-Directory/static/css/2.1a02f21c.chunk.css",
+    "static/js/2.41dd72c5.chunk.js": "/Overwatch-League-Player-Directory/static/js/2.41dd72c5.chunk.js",
+    "static/js/2.41dd72c5.chunk.js.map": "/Overwatch-League-Player-Directory/static/js/2.41dd72c5.chunk.js.map",
+    "static/js/3.eee56e42.chunk.js": "/Overwatch-League-Player-Directory/static/js/3.eee56e42.chunk.js",
+    "static/js/3.eee56e42.chunk.js.map": "/Overwatch-League-Player-Directory/static/js/3.eee56e42.chunk.js.map",
+    "index.html": "/Overwatch-League-Player-Directory/index.html",
+    "static/css/2.1a02f21c.chunk.css.map": "/Overwatch-League-Player-Directory/static/css/2.1a02f21c.chunk.css.map",
+    "static/css/main.3060207d.chunk.css.map": "/Overwatch-League-Player-Directory/static/css/main.3060207d.chunk.css.map",
+    "static/js/2.41dd72c5.chunk.js.LICENSE.txt": "/Overwatch-League-Player-Directory/static/js/2.41dd72c5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.000fb1da.js",
+    "static/js/runtime-main.bdc0eeef.js",
     "static/css/2.1a02f21c.chunk.css",
-    "static/js/2.6683dde9.chunk.js",
+    "static/js/2.41dd72c5.chunk.js",
     "static/css/main.3060207d.chunk.css",
-    "static/js/main.78657862.chunk.js"
+    "static/js/main.40104157.chunk.js"
   ]
 }
