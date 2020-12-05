@@ -3,40 +3,33 @@ import React from 'react';
 import CATEGORIES from '../data/categoriesContext';
 
 function Entry(props) {
-    function getCategoryStats () {
-        let stats = [];
+    function createEntries () {
+        let JSX = CATEGORIES.getCategories(category => {
+            let thisKey = "entry-" + props.id + "-" + category.value;
 
-        for (const category in CATEGORIES) {
-            let thisCat = CATEGORIES[category]; // thisCat is an Object that includes display, value, and path
-            let thisKey = "entry-" + props.id + "-" + thisCat.value;
-            if (thisCat.display !== null) {
-                switch (thisCat.value) {
-                    case "headshot":
-                        stats.push(<td key={thisKey}><img 
-                            src={props[thisCat.value]}
+            switch (category.value) {
+                case "headshot":
+                    return(
+                        <td key={thisKey}><img 
+                            src={props[category.value]}
                             width="100"
-                            ></img></td>)
-                        break;
-                    default:
-                        stats.push(<td key={thisKey}>{props[thisCat.value]}</td>);
-                }
+                            ></img></td>);
+                default:
+                    return(
+                            <td key={thisKey}>
+                            {props[category.value]}
+                            </td>);
             }
-        }
-        return stats;
+        });
+        
+        return JSX;
     }
 
     return (
         <tr>
-            {getCategoryStats()}
+            {createEntries()}
         </tr>
     );
 }
-
-
-
-// function getUsernameWithLink (link, username) {
-//     if (link) { return <a href={link}>{username}</a> }
-//     else { return username }
-// }
 
 export default Entry;
