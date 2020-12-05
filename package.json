@@ -1,8 +1,8 @@
 {
-  "name": "employee-directory",
+  "name": "Overwatch-League-Player-Directory",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sakiskid.github.io/Employee-Directory/",
+  "homepage": "https://sakiskid.github.io/Overwatch-League-Player-Directory/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
